@@ -41,11 +41,23 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Layer1
+  - name: Background
     uniqueID: 2024242105
     locked: 0
-  - name: Layer2
+  - name: VisibleBackElements
     uniqueID: 3029618743
+    locked: 0
+  - name: Player
+    uniqueID: 1026949489
+    locked: 0
+  - name: PlayerFront
+    uniqueID: 3388077857
+    locked: 0
+  - name: Weapons
+    uniqueID: 1110638261
+    locked: 0
+  - name: VisibleFrontElements
+    uniqueID: 1026588499
     locked: 0
   m_RenderingLayers:
   - Default
