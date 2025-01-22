@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
     private Vector2 playerMovement;
     private InputAction moveAction;
-    private float playerSpeed = 3f;
+    private float playerSpeed = 5f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,10 +18,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         playerMovement = moveAction.ReadValue<Vector2>();
-    }
-
-    private void FixedUpdate()
-    {
-        transform.position = new Vector2(transform.position.x, transform.position.y) + playerMovement * Time.deltaTime * playerSpeed;
+        transform.Translate(playerMovement * Time.deltaTime * playerSpeed);
     }
 }

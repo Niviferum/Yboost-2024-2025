@@ -15,12 +15,9 @@ public class PlayerLookAt : MonoBehaviour
     private Vector2 lookDir;
     private Vector2 mousePosition;
 
-    private float _fireRate = 0.1f;
-    private float nextFire = 0.0f;
-    private float bulletLifetime = 1.5f;
-
     public GameObject player;
-    public GameObject bulletPrefab;
+    [SerializeField] private GameObject weapon;
+    private IShooting weaponScript;
     public UnityEngine.Transform spawnPoint;
 
     public Camera cam;
@@ -30,7 +27,11 @@ public class PlayerLookAt : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //cam.ScreenToWorldPoint()
+        if (weapon != null)
+        {
+            weaponScript = weapon.GetComponent<IShooting>();
+        }
+
         lookAction = InputSystem.actions.FindAction("Look");
         shootAction = InputSystem.actions.FindAction("Attack");
     }
@@ -43,23 +44,10 @@ public class PlayerLookAt : MonoBehaviour
 
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-    }
 
-    void Shoot()
-    {
-        nextFire = Time.time + _fireRate;
-
-        Quaternion dispersion = spawnPoint.rotation * Quaternion.Euler(0, 0, UnityEngine.Random.Range(-2f, 2f));
-
-        GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, dispersion);
-        Destroy(bullet, bulletLifetime);
-    }
-
-    private void FixedUpdate()
-    {
-        if (shootAction.ReadValue<float>() > 0.5 && Time.time > nextFire)
+        if (shootAction.ReadValue<float>() > 0.5 && weapon != null)
         {
-            Shoot();
+            weaponScript.Shoot(spawnPoint);
         }
     }
 }
