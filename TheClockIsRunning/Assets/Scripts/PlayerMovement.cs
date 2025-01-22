@@ -16,8 +16,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerMovement = moveAction.ReadValue<Vector2>()*Time.deltaTime*playerSpeed;
+        playerMovement = moveAction.ReadValue<Vector2>();
+    }
 
-        transform.position = new Vector2(transform.position.x, transform.position.y) + playerMovement;
+    private void FixedUpdate()
+    {
+        transform.position = new Vector2(transform.position.x, transform.position.y) + playerMovement * Time.deltaTime * playerSpeed;
     }
 }
