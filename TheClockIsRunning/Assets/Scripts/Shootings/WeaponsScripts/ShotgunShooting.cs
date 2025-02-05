@@ -5,7 +5,6 @@ public class ShotgunShooting : MonoBehaviour, IShooting
     private float _fireRate = 1f;
     private float nextFire = 0.0f;
     private float bulletLifetime = 0.5f;
-    private float bulletDamage = 1f;
     private float dispersionRange = 6f;
     [SerializeField] private GameObject bulletPrefab;
 

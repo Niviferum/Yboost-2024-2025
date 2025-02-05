@@ -1,11 +1,10 @@
 using UnityEngine;
 
-public class SniperShooting : MonoBehaviour, IShooting
+public class AssautRifleShooting : MonoBehaviour, IShooting
 {
-    private float _fireRate = 1.2f;
+    private float _fireRate = 0.1f;
     private float nextFire = 0.0f;
-    private float bulletLifetime = 3f;
-    private float bulletDamage = 0.2f;
+    private float bulletLifetime = 1.5f;
     private float dispersionRange = 2f;
     [SerializeField] private GameObject bulletPrefab;
 

@@ -4,9 +4,8 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - assaultrifle
-  - shotgun
-  - sniper
+  - bullet
+  - weapon
   layers:
   - Default
   - TransparentFX

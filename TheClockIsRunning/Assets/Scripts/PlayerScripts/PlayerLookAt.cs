@@ -1,11 +1,5 @@
-using System;
-using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class PlayerLookAt : MonoBehaviour
 {
@@ -16,9 +10,9 @@ public class PlayerLookAt : MonoBehaviour
     private Vector2 mousePosition;
 
     public GameObject player;
-    [SerializeField] private GameObject weapon;
+    private GameObject weapon;
     private IShooting weaponScript;
-    public UnityEngine.Transform spawnPoint;
+    private UnityEngine.Transform spawnPoint;
 
     public Camera cam;
 
@@ -26,9 +20,12 @@ public class PlayerLookAt : MonoBehaviour
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
+    {   
+        weapon = gameObject.transform.GetChild(0).gameObject;
+        
         if (weapon != null)
         {
+            spawnPoint = weapon.transform.GetChild(0).transform;
             weaponScript = weapon.GetComponent<IShooting>();
         }
 
