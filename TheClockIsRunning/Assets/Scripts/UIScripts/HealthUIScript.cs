@@ -9,7 +9,7 @@ public class HealthUIScript : MonoBehaviour
     private void Start()
     {
         healthSlider = GetComponent<Slider>();
-        healthManager = GameObject.Find("Player").GetComponent<HealthManager>();
+        healthManager = GameObject.Find("PlayerTest").GetComponent<HealthManager>();
     }
 
     public void ChangeHealth()
